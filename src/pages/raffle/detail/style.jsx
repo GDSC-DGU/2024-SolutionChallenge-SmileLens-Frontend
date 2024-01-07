@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
 
-export const LandingWrapper = styled.div`
+export const DetailWrapper = styled.div`
   display: flex;
 `;
