@@ -1,37 +1,19 @@
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
-import Main from "./pages/main/Main";
-import { styled } from "styled-components";
-import NavBar from "./components/layouts/NavBar";
+import { createBrowserRouter } from 'react-router-dom';
 
+import App from './App';
+import Landing from './pages/landing/Landing';
 
-const Wrapper = styled.div`
-    margin: 0 auto;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-`
-const Layout = () => {
-    return (
-      <>
-      <Wrapper>
-        <NavBar />
-        <Outlet />
-    </Wrapper>
-      </>
-    );
-  };
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      {
+        path: '/',
+        element: <Landing />,
+      },
+    ],
+  },
+]);
 
-export default function Router() {
-  return (
-
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout/>}>
-            <Route index path="/" element={<Main/>} />
-        </Route>
-
-      </Routes>
-    </BrowserRouter>
-  );
-}
+export default router;
