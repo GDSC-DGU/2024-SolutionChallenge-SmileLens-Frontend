@@ -1,8 +1,14 @@
 import React from 'react';
 import * as S from './style';
+import Header from '../../../components/raffleApplyment/header/Header';
 
 function Detail() {
-  return <S.DetailWrapper>Detail 페이지</S.DetailWrapper>;
+  return (
+    <>
+      <Header title={'래플'} />
+      <S.DetailWrapper></S.DetailWrapper>
+    </>
+  );
 }
 
 export default Detail;

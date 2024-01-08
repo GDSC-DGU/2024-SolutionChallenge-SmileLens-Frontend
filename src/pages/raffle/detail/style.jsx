@@ -1,5 +1,3 @@
 import { styled } from 'styled-components';
 
-export const DetailWrapper = styled.div`
-  display: flex;
-`;
+export const DetailWrapper = styled.div``;
