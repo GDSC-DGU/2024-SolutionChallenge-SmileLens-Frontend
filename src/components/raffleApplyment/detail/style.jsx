@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const DetailWrapper = styled.div`
   display: flex;
@@ -30,7 +31,9 @@ export const DetailDate = styled.div`
 
 export const DetailContentWrapper = styled.div`
   display: flex;
-  width: 80%;
+  min-width: 100%;
+  padding: 0px 10px;
+  min-height: 321px;
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
@@ -88,9 +91,11 @@ export const DetailContent = styled.div`
   font-size: 9px;
   font-weight: 400;
   line-height: 20px;
-  margin: 10px 20px;
+  margin: 10px 0px;
+  display: flex;
+  width: 234px;
 `;
-export const ApplyButton = styled.div`
+export const ApplyButton = styled(Link)`
   display: flex;
   position: absolute;
   bottom: 0px;
