@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const DetailWrapper = styled.div`
   display: flex;
@@ -94,7 +95,7 @@ export const DetailContent = styled.div`
   display: flex;
   width: 234px;
 `;
-export const ApplyButton = styled.div`
+export const ApplyButton = styled(Link)`
   display: flex;
   position: absolute;
   bottom: 0px;

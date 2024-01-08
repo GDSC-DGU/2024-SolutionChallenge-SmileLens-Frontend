@@ -1,4 +1,5 @@
 import React from 'react';
+
 import * as S from './style';
 
 function Detail(props) {
@@ -19,7 +20,7 @@ function Detail(props) {
         </S.DetailContentHeader>
         <S.DetailContent>{props.content}</S.DetailContent>
       </S.DetailContentWrapper>
-      <S.ApplyButton>신청하기</S.ApplyButton>
+      <S.ApplyButton to="/raffle/detail/payment">신청하기</S.ApplyButton>
     </S.DetailWrapper>
   );
 }
