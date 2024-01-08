@@ -1,5 +1,4 @@
 import React from 'react';
-import * as S from './style';
 import Header from '../../../components/raffleApplyment/header/Header';
 import RaffleDetail from '../../../components/raffleApplyment/detail/Detail';
 import raffleImg from '../../../assets/images/raffleApplyment/raffleImg.png';
