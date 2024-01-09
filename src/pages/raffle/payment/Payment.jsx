@@ -28,7 +28,9 @@ function Payment() {
           </S.PaymentModalAddress>
 
           <S.PaymentModalButton>
-            <S.PaymentModalOkay onClick={closeModal}>확인</S.PaymentModalOkay>
+            <S.PaymentModalOkay to="/raffle/detail/payment/complete">
+              확인
+            </S.PaymentModalOkay>
             <S.PaymentModalCancle onClick={closeModal}>
               취소
             </S.PaymentModalCancle>

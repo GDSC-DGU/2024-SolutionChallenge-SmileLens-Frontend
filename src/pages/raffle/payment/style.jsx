@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const PaymentWrapper = styled.div`
   display: flex;
@@ -145,7 +146,7 @@ export const PaymentModalButton = styled.div`
   bottom: 24px;
   gap: 28px;
 `;
-export const PaymentModalOkay = styled.div`
+export const PaymentModalOkay = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
