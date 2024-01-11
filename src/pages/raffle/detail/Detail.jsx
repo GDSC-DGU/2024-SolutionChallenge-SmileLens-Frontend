@@ -20,7 +20,7 @@ function Detail() {
       const response = await axios.get(`user/raffle-products/${id}`);
       setData(response.data.result);
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 

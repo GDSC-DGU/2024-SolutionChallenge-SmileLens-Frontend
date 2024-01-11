@@ -31,7 +31,7 @@ function Payment() {
       setData(response.data.result);
       setPhoneNum(response.data.result.userPhoneNumber);
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 
@@ -44,7 +44,7 @@ function Payment() {
         state: responseData,
       });
     } catch (e) {
-      console.log(e);
+      // console.log(e);
       alert('포인트가 부족합니다 :(');
     }
   };
