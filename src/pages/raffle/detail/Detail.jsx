@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../../../components/raffleApplyment/header/Header';
 import RaffleDetail from '../../../components/raffleApplyment/detail/Detail';
-import raffleImg from '../../../assets/images/raffleApplyment/raffleImg.png';
 import ProfileImg from '../../../assets/images/raffleApplyment/profile.png';
 
 // api
