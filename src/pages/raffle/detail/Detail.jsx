@@ -1,24 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../../../components/raffleApplyment/header/Header';
 import RaffleDetail from '../../../components/raffleApplyment/detail/Detail';
 import raffleImg from '../../../assets/images/raffleApplyment/raffleImg.png';
 import ProfileImg from '../../../assets/images/raffleApplyment/profile.png';
 
+// api
+import axios from '../../../api/axios';
+
 function Detail() {
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('user/raffle-products/1');
+      console.log(response.data.result);
+      setData(response.data.result);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <>
       <Header title={'래플'} />
-      <RaffleDetail
-        title={'영상 이벤트'}
-        date={'2023.04.25 ~ 2023.10.27'}
-        raffleImg={raffleImg}
-        price={'응모 금액 : 1000원'}
-        profileImg={ProfileImg}
-        profileName={'도티'}
-        content={
-          'jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구jgl여름쩌구 여름쩌구 저쩌구어쩌구 저쩌구'
-        }
-      />
+      {data && (
+        <RaffleDetail
+          title={data.raffleProductTitle}
+          startDate={data.startDate}
+          endDate={data.endDate}
+          raffleImg={data.raffleProductThumbnail}
+          price={data.raffleProductPrice}
+          profileImg={ProfileImg}
+          profileName={data.creatorName}
+          content={data.raffleProductContent}
+        />
+      )}
     </>
   );
 }

@@ -1,16 +1,26 @@
 import React from 'react';
 
 import * as S from './style';
+import raffleImg from '../../../assets/images/raffleApplyment/defaultRaffleImg.png';
 
 function Detail(props) {
   return (
     <S.DetailWrapper>
       <S.DetailTitle>{props.title}</S.DetailTitle>
-      <S.DetailDate>{props.date}</S.DetailDate>
+      <S.DetailDate>
+        {props.startDate} ~ {props.endDate}
+      </S.DetailDate>
       <S.DetailContentWrapper>
-        <S.DetailContentImg src={props.raffleImg} />
+        {props.raffleImg ? (
+          <S.DetailContentImg src={props.raffleImg} />
+        ) : (
+          <S.DetailContentImg src={raffleImg} />
+        )}
+
         <S.DetailContentHeader>
-          <S.DetailContentPrice>{props.price} </S.DetailContentPrice>
+          <S.DetailContentPrice>
+            응모 금액: {props.price}원
+          </S.DetailContentPrice>
           <S.DetailContentProfile>
             <S.DetailContentProfileImg src={props.profileImg} />
             <S.DetailContentProfileName>
