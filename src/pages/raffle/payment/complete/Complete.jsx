@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import * as S from './style';
 import CompleteIcon from '../../../../assets/images/raffleApplyment/planet.png';
 
 function Complete() {
+  const location = useLocation();
+  const response = location.state ? location.state : null;
+  console.log(response);
+
   return (
     <>
       <S.CompleteWrapper>
@@ -13,13 +18,15 @@ function Complete() {
 
         <S.CompleteContentBox>
           <S.CompleteContentBoxTitle>
-            [도티] 영상 이벤트
+            {response.raffleProductTitle}
           </S.CompleteContentBoxTitle>
           <S.CompleteContentBoxSubWrapper>
             <S.CompleteContentBoxSubTitle>
               결제 금액
             </S.CompleteContentBoxSubTitle>
-            <S.CompleteContentBoxSub>1,000원</S.CompleteContentBoxSub>
+            <S.CompleteContentBoxSub>
+              {response.raffleProductPrice}원
+            </S.CompleteContentBoxSub>
           </S.CompleteContentBoxSubWrapper>
 
           <S.CompleteContentBoxSubWrapper>
@@ -33,7 +40,7 @@ function Complete() {
             주문 주소
           </S.CompleteContentBoxAddressTitle>
           <S.CompleteContentBoxAddress>
-            서울특별시 강남구 강남동 강남빌딩 1010동 101호
+            {response.orderAddress}
           </S.CompleteContentBoxAddress>
         </S.CompleteContentBox>
       </S.CompleteWrapper>

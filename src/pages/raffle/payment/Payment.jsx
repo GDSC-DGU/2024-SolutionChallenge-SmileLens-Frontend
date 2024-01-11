@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as S from './style';
 import Header from '../../../components/raffleApplyment/header/Header';
 
@@ -17,6 +18,7 @@ function Payment() {
   // data
   const [data, setData] = useState();
   const [phoneNum, setPhoneNum] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchData();
@@ -25,11 +27,25 @@ function Payment() {
   const fetchData = async () => {
     try {
       const response = await axios.get('/user/raffle-products/1/order');
-      console.log(response.data.result);
+      // console.log(response.data.result);
       setData(response.data.result);
       setPhoneNum(response.data.result.userPhoneNumber);
     } catch (e) {
       console.log(e);
+    }
+  };
+
+  const onClickPayment = async () => {
+    try {
+      const response = await axios.post('/user/raffle-products/1/order');
+      const responseData = response.data.result;
+
+      navigate('/raffle/detail/payment/complete', {
+        state: responseData,
+      });
+    } catch (e) {
+      console.log(e);
+      alert('포인트가 부족합니다 :(');
     }
   };
 
@@ -48,7 +64,7 @@ function Payment() {
           <S.PaymentModalAddress>{data.userAddress}</S.PaymentModalAddress>
 
           <S.PaymentModalButton>
-            <S.PaymentModalOkay to="/raffle/detail/payment/complete">
+            <S.PaymentModalOkay onClick={onClickPayment}>
               확인
             </S.PaymentModalOkay>
             <S.PaymentModalCancle onClick={closeModal}>
