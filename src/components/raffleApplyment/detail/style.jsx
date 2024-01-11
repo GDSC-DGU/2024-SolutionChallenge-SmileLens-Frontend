@@ -12,7 +12,6 @@ export const DetailTitle = styled.div`
   font-weight: 700;
   line-height: 20px;
   margin-top: 20px;
-  margin-bottom: 5px;
 `;
 
 export const DetailDate = styled.div`
@@ -27,16 +26,16 @@ export const DetailDate = styled.div`
   line-height: 20px;
   border-radius: 40px;
   text-align: center;
+  margin-top: 10px;
 `;
 
 export const DetailContentWrapper = styled.div`
   display: flex;
-  min-width: 100%;
-  padding: 0px 10px;
+  width: 273px;
   min-height: 321px;
   flex-direction: column;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 20px;
   border-radius: 20px;
   border: 1px solid #8148f6;
   box-shadow: 0px 0px 4px 0px #000;
