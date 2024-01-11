@@ -30,7 +30,7 @@ function Detail(props) {
         </S.DetailContentHeader>
         <S.DetailContent>{props.content}</S.DetailContent>
       </S.DetailContentWrapper>
-      <S.ApplyButton to="/raffle/detail/payment">신청하기</S.ApplyButton>
+      <S.ApplyButton to={`/raffle/${props.id}/payment`}>신청하기</S.ApplyButton>
     </S.DetailWrapper>
   );
 }

@@ -30,6 +30,7 @@ function Detail() {
       <Header title={'래플'} />
       {data && (
         <RaffleDetail
+          id={id}
           title={data.raffleProductTitle}
           startDate={data.startDate}
           endDate={data.endDate}

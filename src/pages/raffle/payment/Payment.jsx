@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import * as S from './style';
 import Header from '../../../components/raffleApplyment/header/Header';
 
@@ -7,6 +7,7 @@ import Header from '../../../components/raffleApplyment/header/Header';
 import axios from '../../../api/axios';
 
 function Payment() {
+  const { id } = useParams();
   const [isMpdalOpen, setIsModalOpen] = useState(false);
   const openModal = () => {
     setIsModalOpen(true);
@@ -26,7 +27,7 @@ function Payment() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('/user/raffle-products/1/order');
+      const response = await axios.get(`/user/raffle-products/${id}/order`);
       // console.log(response.data.result);
       setData(response.data.result);
       setPhoneNum(response.data.result.userPhoneNumber);
@@ -37,10 +38,10 @@ function Payment() {
 
   const onClickPayment = async () => {
     try {
-      const response = await axios.post('/user/raffle-products/1/order');
+      const response = await axios.post(`/user/raffle-products/${id}/order`);
       const responseData = response.data.result;
 
-      navigate('/raffle/detail/payment/complete', {
+      navigate('/raffle/payment/complete', {
         state: responseData,
       });
     } catch (e) {
