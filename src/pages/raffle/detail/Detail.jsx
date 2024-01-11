@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Header from '../../../components/raffleApplyment/header/Header';
 import RaffleDetail from '../../../components/raffleApplyment/detail/Detail';
 import ProfileImg from '../../../assets/images/raffleApplyment/profile.png';
@@ -7,6 +8,7 @@ import ProfileImg from '../../../assets/images/raffleApplyment/profile.png';
 import axios from '../../../api/axios';
 
 function Detail() {
+  const { id } = useParams();
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -15,7 +17,7 @@ function Detail() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('user/raffle-products/1');
+      const response = await axios.get(`user/raffle-products/${id}`);
       console.log(response.data.result);
       setData(response.data.result);
     } catch (e) {

@@ -47,7 +47,7 @@ const router = createBrowserRouter([
         element: <RaffleWritingComplete />,
       },
       {
-        path: '/raffle/detail',
+        path: '/raffle/detail/:id',
         element: <RaffleDetail />,
       },
       {
