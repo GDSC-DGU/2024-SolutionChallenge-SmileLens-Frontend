@@ -5,7 +5,7 @@ const instance = axios.create({
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
-    Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjE0LCJleHAiOjE3MDQ5NDU0NzN9.gRvLegQMg2RTFHMuw0jiA9bQq9xs_Wgrnbnn3hB3JnY`,
+    Authorization: `Bearer 토큰`,
   },
 });
 export default instance;
