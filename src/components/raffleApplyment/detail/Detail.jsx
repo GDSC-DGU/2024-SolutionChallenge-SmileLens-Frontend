@@ -2,6 +2,7 @@ import React from 'react';
 
 import * as S from './style';
 import raffleImg from '../../../assets/images/raffleApplyment/defaultRaffleImg.png';
+import ProfileImg from '../../../assets/images/raffleApplyment/defaultCreatorProfile.png';
 
 function Detail(props) {
   return (
@@ -22,7 +23,11 @@ function Detail(props) {
             응모 금액: {props.price}원
           </S.DetailContentPrice>
           <S.DetailContentProfile>
-            <S.DetailContentProfileImg src={props.profileImg} />
+            {props.profileImg ? (
+              <S.DetailContentProfileImg src={props.profileImg} />
+            ) : (
+              <S.DetailContentProfileImg src={props.ProfileImg} />
+            )}
             <S.DetailContentProfileName>
               {props.profileName}
             </S.DetailContentProfileName>

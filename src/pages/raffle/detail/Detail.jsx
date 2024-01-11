@@ -35,7 +35,7 @@ function Detail() {
           endDate={data.endDate}
           raffleImg={data.raffleProductThumbnail}
           price={data.raffleProductPrice}
-          profileImg={ProfileImg}
+          profileImg={data.creatorProfileImage}
           profileName={data.creatorName}
           content={data.raffleProductContent}
         />
