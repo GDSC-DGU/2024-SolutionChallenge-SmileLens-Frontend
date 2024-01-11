@@ -18,7 +18,6 @@ function Detail() {
   const fetchData = async () => {
     try {
       const response = await axios.get(`user/raffle-products/${id}`);
-      console.log(response.data.result);
       setData(response.data.result);
     } catch (e) {
       console.log(e);

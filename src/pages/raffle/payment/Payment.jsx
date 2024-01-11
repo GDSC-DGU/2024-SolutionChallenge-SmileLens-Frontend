@@ -28,7 +28,6 @@ function Payment() {
   const fetchData = async () => {
     try {
       const response = await axios.get(`/user/raffle-products/${id}/order`);
-      // console.log(response.data.result);
       setData(response.data.result);
       setPhoneNum(response.data.result.userPhoneNumber);
     } catch (e) {

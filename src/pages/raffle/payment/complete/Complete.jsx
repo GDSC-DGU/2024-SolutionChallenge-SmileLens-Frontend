@@ -6,7 +6,6 @@ import CompleteIcon from '../../../../assets/images/raffleApplyment/planet.png';
 function Complete() {
   const location = useLocation();
   const response = location.state ? location.state : null;
-  console.log(response);
 
   return (
     <>
