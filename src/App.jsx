@@ -2,7 +2,6 @@ import { Outlet } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { GlobalStyle } from './style/globalStyle';
 import BackGroundImg from './assets/images/background/background.png';
-import PlanetIcon from './assets/images/background/planet.png';
 import NebulaIcon from './assets/images/background/smilelens.png';
 
 const Wrapper = styled.div`

@@ -74,7 +74,7 @@ function Letter() {
   return (
     <S.LetterWrapper style={LetterWrapperStyle}>
       <div className="Frame9" style={FrameStyle}>
-      <Link to="/summary"> 
+        <Link to="/summary"> 
       {renderArrowBackCircle()}
     </Link>
     
