@@ -1,10 +1,9 @@
 import { Outlet } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { GlobalStyle } from './style/globalStyle';
-import NavBar from './components/layouts/NavBar.jsx';
 import BackGroundImg from './assets/images/background/background.png';
 import PlanetIcon from './assets/images/background/planet.png';
-import NebulaIcon from './assets/images/background/nebula.png';
+import NebulaIcon from './assets/images/background/smilelens.png';
 
 const Wrapper = styled.div`
   margin: 0 auto;
@@ -15,19 +14,31 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   max-width: 420px;
+  position: relative; /* 새로 추가한 div 요소의 position을 상대적(relative)으로 설정 */
   background-color: white;
   background-repeat: repeat;
-  background-image: url(${BackGroundImg}); /* 이미지 경로를 정확히 지정해야 합니다. */
+  background-image: url(${BackGroundImg});
   background-size: cover;
+  & > div {
+    width: 325px;
+    height: 671px;
+    position: relative;
+    background: #FCF8F7;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    backdrop-filter: blur(42px);
+  }
 `;
 
+
 const Content = styled.div`
+  margin-top: 15px;
+  margin-bottom: 20px; /* Content 하단에 여백 추가 */
   flex-grow: 1;
   width: 85%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 25px;
   border-radius: 15px;
   border: 1px solid rgba(117, 119, 132, 0.25);
   background: rgba(25, 25, 28, 0.5);
@@ -37,16 +48,12 @@ const Content = styled.div`
 `;
 
 const Back = styled.div``;
-const PlanetIconWrap = styled.img`
-  width: 50px;
-  margin-top: 12px;
-  position: absolute;
-  z-index: 1;
-`;
+
 const NebulaIconWrap = styled.img`
-  width: 360px;
-  position: relative;
-  margin-top: -55px;
+  max-width: 130px; 
+   position: relative;
+  margin-top: 5px;
+  margin-bottom: 11px;
 `;
 
 const Layout = () => {
@@ -54,12 +61,12 @@ const Layout = () => {
     <>
       <Back>
         <Wrapper>
-          <PlanetIconWrap src={PlanetIcon} />
           <NebulaIconWrap src={NebulaIcon} />
+          <br />
           <Content>
             <Outlet />
           </Content>
-          <NavBar />
+  
         </Wrapper>
       </Back>
     </>

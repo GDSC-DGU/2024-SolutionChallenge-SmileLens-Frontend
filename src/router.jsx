@@ -1,20 +1,14 @@
 import { createBrowserRouter } from 'react-router-dom';
+import Landing from './pages/landing/Landing';
+import Introduce from './pages/introduce/Introduce';
+import Upload from './pages/upload/Upload';
+import Select from './pages/select/Select';
+import Wait from './pages/wait/Wait';
+import Summary from './pages/summary/Summary';
+import Letter from './pages/letter/Letter';
+import Voice from './pages/voice/Voice';
 
 import App from './App';
-import Landing from './pages/landing/Landing';
-import WinningConfirmBox from './pages/winningConfirm/box/Box.jsx';
-import RaffleBox from './pages/raffle/box/Box.jsx';
-import Creator from './pages/creator/Creator.jsx';
-import Setting from './pages/setting/Setting.jsx';
-import RaffleWriting from './pages/raffleWriting/writing/Writing.jsx';
-import RaffleWritingComplete from './pages/raffleWriting/complete/Complete.jsx';
-import RaffleDetail from './pages/raffle/detail/Detail.jsx';
-import RaffleWinningConfirmDetail from './pages/winningConfirm/detail/Detail.jsx';
-import RafflePayment from './pages/raffle/payment/Payment.jsx';
-import LogIn from './pages/logIn/LogIn.jsx';
-import UserSignUp from './pages/signUp/UserSignUp.jsx';
-import CreatorSignUp from './pages/signUp/CreatorSignUp.jsx';
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -24,54 +18,42 @@ const router = createBrowserRouter([
         path: '/',
         element: <Landing />,
       },
+
       {
-        path: '/login',
-        element: <LogIn />,
+        path: '/introduce',
+        element: <Introduce />,
       },
+
       {
-        path: '/usersignup',
-        element: <UserSignUp />,
+        path: '/upload',
+        element: <Upload />,
       },
+
       {
-        path: '/creatorsignup',
-        element: <CreatorSignUp />,
+        path: '/select',
+        element: <Select />,
       },
+
       {
-        path: '/winningConfirm',
-        element: <WinningConfirmBox />,
+        path: '/wait',
+        element: <Wait />,
       },
+
       {
-        path: '/setting',
-        element: <Setting />,
+        path: '/summary',
+        element: <Summary />,
       },
+
       {
-        path: '/raffle',
-        element: <RaffleBox />,
+        path: '/letter',
+        element: <Letter />,
       },
+
       {
-        path: '/creator',
-        element: <Creator />,
+        path: '/voice',
+        element: <Voice />,
       },
-      {
-        path: '/raffleWriting',
-        element: <RaffleWriting />,
-      },
-      {
-        path: '/raffleWriting/complete',
-        element: <RaffleWritingComplete />,
-      },
-      {
-        path: '/raffle/detail',
-        element: <RaffleDetail />,
-      },
-      {
-        path: '/raffle/detail/payment',
-        element: <RafflePayment />,
-      },
-      {
-        path: '/winningConfirm/detail',
-        element: <RaffleWinningConfirmDetail />,
-      },
+
     ],
   },
 ]);
