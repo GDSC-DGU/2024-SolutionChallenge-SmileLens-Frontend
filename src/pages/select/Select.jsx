@@ -7,6 +7,7 @@ import TTSIcon from '../../assets/images/icon/tts.png';
 import TTS2Icon from '../../assets/images/icon/tts2.png';
 import SummaryIcon from '../../assets/images/icon/summary.png';
 import CategoryIcon from '../../assets/images/icon/category.png';
+import axios from '../../api/axios'
 
 const SelectWrapperStyle = {
   display: 'flex',
@@ -75,23 +76,45 @@ const renderArrowBackCircle = () => (
 const renderButton1 = () => (
   <div style={ButtonsCtaSecondaryStyle1} />
 );
+const handleConvertDocument = async (selectedFile) => {
+  if (!selectedFile) {
+    console.error('업로드된 파일이 없습니다.');
+    return;
+  }
 
-const renderButton2 = (selectedFile) => {
+  const formData = new FormData();
+  formData.append('file', selectedFile);
+
+  try {
+    const response = await axios.post('http://127.0.0.1:8000/api/v1/convert/', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+    console.log('서버 응답:', response.data);
+  } catch (error) {
+    console.error('서버 요청 실패:', error);
+  }
+};
+
+
+  
+const renderButton2 = (selectedFile, handleConvertDocument) => {
   const text = "문서 변환하기";
   
   if (selectedFile) {
     return (
-      <Link to="/wait"> {/* Link로 /wait 경로로 이동하도록 설정 */}
-        <div style={ButtonsCtaSecondaryStyle2}>
-          <div style={{ width: 257, height: 7.26, left: 0, top: 9, position: 'absolute', textAlign: 'center', color: 'white', fontSize: 18, fontFamily: 'Noto Sans KR', fontWeight: '700', wordWrap: 'break-word' }}>{text}</div>
-        </div>
+      <Link to="/wait">
+      <div style={ButtonsCtaSecondaryStyle2} onClick={handleConvertDocument}>
+        <div style={{ width: 257, height: 7.26, left: 0, top: 9, position: 'absolute', textAlign: 'center', color: 'white', fontSize: 18, fontFamily: 'Noto Sans KR', fontWeight: '700', wordWrap: 'break-word' }}>{text}</div>
+      </div>
       </Link>
     );
   } else {
     return null;
   }
 };
-  
+
   
   
 
@@ -156,7 +179,9 @@ function Select() {
               />
             </div>
     
-            {renderButton2(selectedFile)}
+            {renderButton2(selectedFile, () => handleConvertDocument(selectedFile))}
+
+
     
             <div className="Ai" style={{ width: 360, height: 7.26, left: 0, top: 97, position: 'absolute', textAlign: 'center', color: '#484747', fontSize: 20, fontFamily: 'Noto Sans KR', fontWeight: '900', wordWrap: 'break-word', lineHeight: '1.3' }}>변환하고자 하는 문서를<br />선택해보세요!</div>
             <div className="DocumentType" style={{width: 360, height: 7.26, left: 0, top: 80, position: 'absolute', textAlign: 'center', color: '#7d7d7d', fontSize: 12, fontFamily: 'Noto Sans KR', fontWeight: '400', wordWrap: 'break-word', lineHeight: '1.3'}}>
