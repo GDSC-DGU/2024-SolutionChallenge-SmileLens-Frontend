@@ -45,8 +45,8 @@ const renderArrowBackCircle = () => (
   </div>
 );
 
-const renderButton = (text, to) => (
-  <Link to={to}>
+const renderButton = (text, to, state) => (
+  <Link to={to} state={state}>
     <div style={{ ...ButtonStyle, left: to === "/voice" ? 0 : 158 }}>
       <div style={{ ...ButtonStyle, borderRadius: 25 }} />
       <div style={{ ...ButtonStyle, height: 7.26, top: 11, textAlign: 'center', color: 'white', fontSize: 16, fontWeight: '700' }}>{text}</div>
@@ -54,33 +54,40 @@ const renderButton = (text, to) => (
   </Link>
 );
 
+
+
 const renderText = (text) => (
   <div style={{ width: 257, height: 7.26, left: 0, top: 9, position: 'absolute', textAlign: 'center', color: 'white', fontSize: 18, fontFamily: 'Noto Sans KR', fontWeight: '700', wordWrap: 'break-word' }}>{text}</div>
 );
 
-const renderSummaryContent = (summary) => (
-  <React.Fragment>
-    <div className="Frame10" style={{ width: 331, height: 455, left: 20, top: 150, position: 'relative' }}>
-      <div className="Landing" style={{ width: 319, height: 455, left: 0, top: 0, position: 'absolute', background: '#FCF8F7', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 20, backdropFilter: 'blur(42px)' }} />
-      <div className="SummaryText" style={{ width: 319, left: 3, top: 90, position: 'absolute', color: '#484747', fontSize: 14, fontFamily: 'Noto Sans KR', fontWeight: '500', wordWrap: 'break-word', lineHeight: '1.7' }}>
-        {summary && summary.length > 0 ? (
-          summary.map((item, index) => (
-            <React.Fragment key={index}>
-              <p>{item}</p>
-              {index !== summary.length - 1 && <br />} 
-            </React.Fragment>
-          ))
-        ) : (
-          <p>요약 내용이 없습니다.</p>
-        )}
-      </div>
-      <div className="Group446" style={{ width: 294.23, height: 34, left: 12, top: 26, position: 'absolute' }}>
+const renderSummaryContent = (summary) => {
+  const summaryHeight = summary ? summary.length * 50 : 0; 
+  const frameHeight = Math.max(summaryHeight + 400, 455);
+
+  return (
+    <React.Fragment>
+      <div className="Frame10" style={{ width: 331, height: frameHeight, left: 20, top: 150, position: 'relative' }}>
+        <div className="Landing" style={{ width: 319, height: frameHeight, left: 0, top: 0, position: 'absolute', background: '#FCF8F7', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 20, backdropFilter: 'blur(42px)' }} />
+        <div className="SummaryText" style={{ width: 319, left: 3, top: 90, position: 'absolute', color: '#484747', fontSize: 15, fontFamily: 'Noto Sans KR', fontWeight: '500', wordWrap: 'break-word', lineHeight: '1.6' }}>
+          {summary && summary.length > 0 ? (
+            summary.map((item, index) => (
+              <React.Fragment key={index}>
+                <p>{item}</p>
+                {index !== summary.length - 1 && <br />} 
+              </React.Fragment>
+            ))
+          ) : (
+            <p>요약 내용이 없습니다.</p>
+          )}
+        </div>
+        <div className="Group446" style={{ width: 294.23, height: 34, left: 12, top: 26, position: 'absolute' }}>
         {renderButton("음성으로 변환하기", "/voice")}
-        {renderButton("내용 원문 보기", "/letter")}
+        {renderButton("내용 원문 보기", "/letter")}        
+        </div>
       </div>
-    </div>
-  </React.Fragment>
-);
+    </React.Fragment>
+  );
+};
 
 
 const Summary = () => {

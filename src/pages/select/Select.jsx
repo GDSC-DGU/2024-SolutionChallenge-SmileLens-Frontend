@@ -202,9 +202,6 @@ const { summary, all, file_path, all_text } = response.data;
               </div>
             </div>
 
-
-
-
           </React.Fragment>
         )}
       </div>
