@@ -89,6 +89,8 @@ const renderButton2 = (selectedFile, handleConvertDocument) => {
   }
 };
 
+
+
 const renderText = (text) => (
   <div style={{ width: 257, height: 7.26, left: 0, top: 9, position: 'absolute', textAlign: 'center', color: 'white', fontSize: 18, fontFamily: 'Noto Sans KR', fontWeight: '700', wordWrap: 'break-word' }}>{text}</div>
 );
