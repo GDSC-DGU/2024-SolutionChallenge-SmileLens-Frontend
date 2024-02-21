@@ -83,32 +83,50 @@ const handleConvertDocument = async (selectedFile) => {
   }
 
   const formData = new FormData();
-  formData.append('file', selectedFile);
+  const fileName = `file_${Date.now()}.png`; // 파일 이름을 임의로 생성합니다.
+  formData.append('image', selectedFile, fileName); // 파일 이름을 추가합니다.
 
   try {
-    const response = await axios.post('http://127.0.0.1:8000/api/v1/convert/', formData, {
+    // API 요청을 보내기 전에 알림을 표시합니다.
+    alert('문서 변환 중입니다. 잠시만 기다려주세요...');
+
+    const response = await axios.post('http://127.0.0.1:8000/api/v1/convert', formData, {
       headers: {
-        'Content-Type': 'multipart/form-data'
-      }
+        'Content-Type': 'multipart/form-data',
+      },
     });
+
     console.log('서버 응답:', response.data);
+
+    const { summary, all, file_path, all_text } = response.data;
+
+    console.log('요약:', summary);
+    console.log('전체:', all);
+    console.log('파일 경로:', file_path);
+    console.log('전체 텍스트:', all_text);
+
+    // API 요청이 완료되면 알림을 닫습니다.
+    alert('문서 변환이 완료되었습니다.');
+
   } catch (error) {
     console.error('서버 요청 실패:', error);
+    console.error('에러 상세 정보:', error.response);
+    // API 요청에 실패한 경우에도 알림을 표시할 수 있습니다.
+    alert('문서 변환에 실패했습니다.');
   }
 };
 
 
-  
-const renderButton2 = (selectedFile, handleConvertDocument) => {
+
+
+const renderButton2 = (selectedFile) => {
   const text = "문서 변환하기";
-  
+
   if (selectedFile) {
     return (
-      <Link to="/wait">
-      <div style={ButtonsCtaSecondaryStyle2} onClick={handleConvertDocument}>
+      <div style={ButtonsCtaSecondaryStyle2} onClick={() => handleConvertDocument(selectedFile)}>
         <div style={{ width: 257, height: 7.26, left: 0, top: 9, position: 'absolute', textAlign: 'center', color: 'white', fontSize: 18, fontFamily: 'Noto Sans KR', fontWeight: '700', wordWrap: 'break-word' }}>{text}</div>
       </div>
-      </Link>
     );
   } else {
     return null;
@@ -146,10 +164,16 @@ function Select() {
     const handleFileChange = (event) => {
       const file = event.target.files[0];
       setSelectedFile(file);
+    
+      if (file) {
+        console.log('문서 선택이 완료되었습니다:', file.name);
+      }
+
+      
     };
+
   
     const handleCategoryClick = () => {
-      // Programmatically trigger click on file input element
       const fileInput = document.getElementById("fileInput");
       if (fileInput) {
         fileInput.click();
