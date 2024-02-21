@@ -6,6 +6,7 @@ import BackIcon from '../../assets/images/icon/back.png';
 import SummaryIcon from '../../assets/images/icon/summary.png';
 import CategoryIcon from '../../assets/images/icon/category.png';
 import axios from '../../api/axios';
+import Summary from '../summary/Summary'
 
 const SelectWrapperStyle = {
   display: 'flex',
@@ -130,7 +131,7 @@ const Select = () => {
 
       console.log('서버 응답:', response.data);
 
-      const { summary, all, file_path, all_text } = response.data;
+const { summary, all, file_path, all_text } = response.data;
 
       console.log('요약:', summary);
       console.log('전체:', all);
@@ -139,8 +140,9 @@ const Select = () => {
 
       alert('문서 변환이 완료되었습니다.');
 
-      // 화면을 Summary 컴포넌트로 변경
-      navigate('/summary');
+
+      navigate('/summary', { state: { summary, all, file_path, all_text }});
+
     } catch (error) {
       console.error('서버 요청 실패:', error);
       console.error('에러 상세 정보:', error.response);
@@ -199,6 +201,10 @@ const Select = () => {
                 <img src={CategoryIcon} style={{ width: 80, height: 80, left: -15, top: -70, position: 'absolute' }} alt="CategoryIcon" />
               </div>
             </div>
+
+
+
+
           </React.Fragment>
         )}
       </div>
