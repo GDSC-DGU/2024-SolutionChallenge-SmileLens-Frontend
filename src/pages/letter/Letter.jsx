@@ -81,9 +81,9 @@ function Letter() {
   return (
     <S.LetterWrapper style={LetterWrapperStyle}>
       <div className="Frame9" style={FrameStyle}>
-        <Link to="/summary">
-          {renderArrowBackCircle()}
-        </Link>
+      <Link to={{ pathname: "/summary", state: { summary, all, file_path, all_text } }}>
+      {renderArrowBackCircle()}
+    </Link>    
         <div className="Ai" style={{ width: 360, height: 7.26, left: 0, top: 97, position: 'absolute', textAlign: 'center', color: '#484747', fontSize: 20, fontFamily: 'Noto Sans KR', fontWeight: '900', wordWrap: 'break-word', lineHeight: '1.3' }}>문서 내용의 원문입니다.</div>
         <div className="Landing" style={{ width: 319, height: 277, left: 20, top: 153, position: 'absolute', background: '#FCF8F7', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 20, backdropFilter: 'blur(42px)' }} />
         {renderGroup(
