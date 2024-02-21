@@ -196,10 +196,10 @@ const { summary, all, file_path, all_text } = response.data;
           <React.Fragment>
             <div className="Group413" style={{ width: 224.90, height: 113.47, left: 47, top: 18, position: 'absolute' }}>
               <div style={{width: 224.90, height: 213.47, left: 0, top: 0, position: 'absolute', background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.60) 0%, rgba(217, 217, 217, 0) 100%)', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 16, border: '1px #862735 solid', backdropFilter: 'blur(4px)' }}></div>
-              <div style={{ width: 124.90, height: 23.75, left: 50, top: 145.65, position: 'absolute', textAlign: 'center', color: '#862735', fontSize: 16, fontFamily: 'Noto Sans KR', fontWeight: '700', wordWrap: 'break-word' }}>카테고리1</div>
+   
             </div>
             <div className="Group433" style={{ width: 319, height: 113, left: 0, top: 126, position: 'absolute' }}>
-              <div className="TextToSpeechSharp1" style={{ width: 48.06, height: 48.06, left: 137, top: 16, position: 'absolute' }}>
+              <div className="TextToSpeechSharp1" style={{ width: 48.06, height: 48.06, left: 137, top: 32, position: 'absolute' }}>
                 <img src={CategoryIcon} style={{ width: 80, height: 80, left: -15, top: -70, position: 'absolute' }} alt="CategoryIcon" />
               </div>
             </div>
