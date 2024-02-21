@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link , useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import * as S from './style';
 import BackIcon from '../../assets/images/icon/back.png';
-import CategoryIconIcon from '../../assets/images/icon/category.png';
 
 const LetterWrapperStyle = {
   display: 'flex',
@@ -57,8 +56,8 @@ const renderArrowBackCircle = () => (
 );
 
 const renderButton = () => (
-    <Link to="/summary">
-  <div style={ButtonsCtaSecondaryStyle} />
+  <Link to="/summary">
+    <div style={ButtonsCtaSecondaryStyle} />
   </Link>
 );
 
@@ -71,27 +70,30 @@ const renderGroup = (content) => (
 );
 
 function Letter() {
+  const { summary, all, file_path, all_text } = useLocation().state;
+
+  // 콘솔에 summary, all, file_path, all_text 출력
+  console.log("summary:", summary);
+  console.log("all:", all);
+  console.log("file_path:", file_path);
+  console.log("all_text:", all_text);
+
   return (
     <S.LetterWrapper style={LetterWrapperStyle}>
       <div className="Frame9" style={FrameStyle}>
-        <Link to="/summary"> 
-      {renderArrowBackCircle()}
-    </Link>
-    
-      
+        <Link to="/summary">
+          {renderArrowBackCircle()}
+        </Link>
         <div className="Ai" style={{ width: 360, height: 7.26, left: 0, top: 97, position: 'absolute', textAlign: 'center', color: '#484747', fontSize: 20, fontFamily: 'Noto Sans KR', fontWeight: '900', wordWrap: 'break-word', lineHeight: '1.3' }}>문서 내용의 원문입니다.</div>
         <div className="Landing" style={{ width: 319, height: 277, left: 20, top: 153, position: 'absolute', background: '#FCF8F7', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 20, backdropFilter: 'blur(42px)' }} />
         {renderGroup(
           <React.Fragment>
-          
-          <div className="Group413" style={{ width: 224.90, height: 113.47, left: 47, top: 18, position: 'absolute' }}>
-          <div style={{width: 224.90, height: 213.47, left: 0, top: 0, position: 'absolute', background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.60) 0%, rgba(217, 217, 217, 0) 100%)', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 16, border: '1px #862735 solid', backdropFilter: 'blur(4px)' }}></div>
-          <div style={{ width: 124.90, height: 23.75, left: 50, top: 145.65, position: 'absolute', textAlign: 'center', color: '#862735', fontSize: 16, fontFamily: 'Noto Sans KR', fontWeight: '700', wordWrap: 'break-word' }}>AI-api 연동</div>
-        </div>
-        <div className="Group433" style={{ width: 319, height: 113, left: 0, top: 126, position: 'absolute' }}>
-        
-        </div>
-
+            <div className="Group413" style={{ width: 224.90, height: 113.47, left: 47, top: 8, position: 'absolute' }}>
+             </div>
+             <div className="Group433" style={{ width: 319, height: 113, left: 10, top: 0, position: 'absolute',fontSize: 15, lineHeight: '1.5' }}>
+             {all_text} {/* all_text 표시 */}
+         </div>
+         
           </React.Fragment>
         )}
       </div>
@@ -100,4 +102,3 @@ function Letter() {
 }
 
 export default Letter;
-
