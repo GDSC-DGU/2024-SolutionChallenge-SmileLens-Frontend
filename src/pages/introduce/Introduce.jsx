@@ -60,7 +60,7 @@ const renderArrowBackCircle = () => (
 
 const renderButton = () => (
     <div style={ButtonsCtaSecondaryStyle}>
-      <Link to="/upload" style={{ textDecoration: 'none', color: 'white' }}>
+      <Link to="/select" style={{ textDecoration: 'none', color: 'white' }}>
         {renderText("문서 변환하기")}
       </Link>
     </div>

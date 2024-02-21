@@ -94,7 +94,7 @@ function Landing() {
       <div style={ContainerStyle}>
         <div style={ButtonContainerStyle}>
           {renderButton()}
-          {renderLinkButton("문서 변환하기", "/upload")}
+          {renderLinkButton("문서 변환하기", "/select")}
         </div>
         <div style={{ width: 257, height: 34.08, left: 51, top: 443, position: 'absolute' }}>
           <div style={{ width: 256.70, height: 34.08, left: 0, top: -25, position: 'absolute', background: 'rgba(214, 31, 39, 0.22)', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 8, backdropFilter: 'blur(4px)', justifyContent: 'center', alignItems: 'center', display: 'inline-flex' }}>
