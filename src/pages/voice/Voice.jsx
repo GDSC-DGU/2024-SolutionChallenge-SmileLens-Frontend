@@ -9,6 +9,8 @@ import RightIcon from '../../assets/images/icon/right.png';
 import OneIcon from '../../assets/images/icon/one.png';
 import TwoIcon from '../../assets/images/icon/two.png';
 import ThreeIcon from '../../assets/images/icon/three.png';
+import PlayIcon from '../../assets/images/icon/play.png';
+import PauseIcon from '../../assets/images/icon/pause.png';
 import summary from '../summary/Summary';
 
 const VoiceWrapperStyle = {
@@ -88,6 +90,9 @@ const Voice = () => {
   const { summary, all, file_path, all_text } = location.state || {};
   const [audioUrl, setAudioUrl] = useState("");
   const [speed, setSpeed] = useState(1);
+  const [isPlaying, setIsPlaying] = useState(false); // 추가: 재생 상태
+  const [currentTime, setCurrentTime] = useState(0); // 추가: 현재 재생 시간
+  const [duration, setDuration] = useState(0); // 추가: 음악 길이
 
   console.log(summary)
   console.log(all)
@@ -99,14 +104,46 @@ const Voice = () => {
       const utterance = new SpeechSynthesisUtterance(summary.join(" "));
       utterance.rate = speed; // 속도 설정
       window.speechSynthesis.speak(utterance);
+      setIsPlaying(true); // 추가: 재생 상태 업데이트
     } else {
       console.error("Summary is undefined or empty.");
     }
   };
 
+  const handlePauseButtonClick = () => { // 추가: 일시정지 기능
+    window.speechSynthesis.pause();
+    setIsPlaying(false); // 재생 상태 업데이트
+  };
+
+  const handleResumeButtonClick = () => { // 추가: 다시 재생 기능
+    window.speechSynthesis.resume();
+    setIsPlaying(true); // 재생 상태 업데이트
+  };
+
   const handleSpeedChange = (newSpeed) => {
     setSpeed(newSpeed);
   };
+
+  const handlePreviousButtonClick = () => {
+    // 이전 곡 로직 추가
+  };
+
+  const handleNextButtonClick = () => {
+    // 다음 곡 로직 추가
+  };
+
+  const handleShuffleButtonClick = () => {
+    // 셔플 기능 추가
+  };
+
+  const handleVolumeChange = (newVolume) => {
+    // 볼륨 조절 로직 추가
+  };
+
+  const handleRestartButtonClick = () => {
+    // 다시 재생 로직 추가
+  };
+
 
   return (
     <S.VoiceWrapper style={VoiceWrapperStyle}>
@@ -118,6 +155,22 @@ const Voice = () => {
         <div className="Landing" style={{ width: 319, height: 277, left: 20, top: 153, position: 'absolute', background: '#FCF8F7', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 20, backdropFilter: 'blur(42px)' }} />
         {renderGroup(
           <React.Fragment>
+          {isPlaying ? (
+            <img
+              src={PauseIcon}
+              style={{ width: 48, height: 48, left: 152, top: 198, position: 'absolute', cursor: 'pointer' }}
+              alt="Pause Button"
+              onClick={handlePlayButtonClick}
+            />
+          ) : (
+            <img
+              src={PlayIcon}
+              style={{ width: 48, height: 48, left: 152, top: 198, position: 'absolute', cursor: 'pointer' }}
+              alt="Play Button"
+              onClick={handlePlayButtonClick}
+            />
+          )}
+          
 
          
 
@@ -146,7 +199,7 @@ const Voice = () => {
               <div style={{ width: 214, height: 29, left: 38, top: 0, position: 'absolute', background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.60) 0%, rgba(217, 217, 217, 0) 100%)', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 8, border: '1px #862735 solid', backdropFilter: 'blur(4px)' }}></div>
               <div style={{ width: 214, height: 7, left: 38, top: 10, position: 'absolute', textAlign: 'center', color: '#484747', fontSize: 16, fontFamily: 'Noto Sans KR', fontWeight: '700', wordWrap: 'break-word' }}>말하기 속도</div>
               <div className="Group345" style={{ width: 292, height: 7, left: 0, top: 192, position: 'absolute' }}>
-                <div style={{ width: 80, height: 7, left: 112, top: -30, position: 'absolute', textAlign: 'center', color: '#484747', fontSize: 20, fontFamily: 'Noto Sans KR', fontWeight: '700', wordWrap: 'break-word' }} onClick={handlePlayButtonClick} >재생하기</div>
+
                 <div style={{ width: 80, height: 7, left: 212, top: 0, position: 'absolute', textAlign: 'center', color: '#484747', fontSize: 14, fontFamily: 'Noto Sans KR', fontWeight: '350', wordWrap: 'break-word' }} >10초 뒤</div>
                 <div style={{ width: 80, height: 7, left: 0, top: 0, position: 'absolute', textAlign: 'center', color: '#484747', fontSize: 14, fontFamily: 'Noto Sans KR', fontWeight: '350', wordWrap: 'break-word' }}>10초 전</div>
               </div>
